@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Str1ckl4nd | Security Student Preview</title>
+  <meta name="description" content="Redacted personal homepage preview for a cybersecurity student.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #edf1eb;
+      --surface: rgba(247, 251, 248, 0.74);
+      --surface-strong: #f7fbf8;
+      --text: #17201c;
+      --muted: #52615a;
+      --line: rgba(23, 32, 28, 0.12);
+      --accent: #176a57;
+      --accent-soft: #a8d1c3;
+      --accent-deep: #0c3e33;
+      --shadow: 0 24px 80px rgba(18, 58, 49, 0.16);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(168, 209, 195, 0.72), transparent 34%),
+        radial-gradient(circle at 80% 18%, rgba(23, 106, 87, 0.14), transparent 24%),
+        linear-gradient(135deg, #f2f6f3 0%, #e6eeea 48%, #dde7e2 100%);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      border-radius: 999px;
+      filter: blur(8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 18rem;
+      height: 18rem;
+      right: -5rem;
+      top: 6rem;
+      background: rgba(23, 106, 87, 0.14);
+    }
+
+    body::after {
+      width: 14rem;
+      height: 14rem;
+      left: -4rem;
+      bottom: 8rem;
+      background: rgba(168, 209, 195, 0.42);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+      padding: 1rem 0 3rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.8rem;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+      color: #f4fbf8;
+      box-shadow: 0 16px 32px rgba(12, 62, 51, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.22rem;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.9fr);
+      gap: 1.2rem;
+      align-items: stretch;
+      margin-top: 0.6rem;
+    }
+
+    .panel {
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.6rem;
+      animation: rise 700ms ease both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.42rem 0.78rem;
+      border-radius: 999px;
+      color: var(--accent-deep);
+      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(23, 106, 87, 0.12);
+      font-size: 0.88rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", sans-serif;
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 1rem;
+      font-size: clamp(2.9rem, 8vw, 5.8rem);
+      line-height: 0.92;
+      max-width: 11ch;
+    }
+
+    .lead {
+      margin: 1.35rem 0 0;
+      max-width: 62ch;
+      font-size: 1.03rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.95rem;
+      padding: 0 1.1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #f4fbf8;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+      box-shadow: 0 18px 30px rgba(12, 62, 51, 0.22);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.48);
+      color: var(--text);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    .meta-card {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(23, 32, 28, 0.06);
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-top: 0.32rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.12rem;
+    }
+
+    .hero-side {
+      padding: 1.1rem;
+      display: grid;
+      gap: 1rem;
+      animation: rise 820ms ease both;
+    }
+
+    .stack-card {
+      padding: 1.4rem;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(247, 251, 248, 0.92)),
+        linear-gradient(135deg, rgba(168, 209, 195, 0.16), transparent 60%);
+      border: 1px solid rgba(23, 32, 28, 0.08);
+    }
+
+    .stack-card h2 {
+      font-size: 1.2rem;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(23, 32, 28, 0.08);
+      font-size: 0.88rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .signal {
+      display: grid;
+      gap: 0.9rem;
+      padding: 1.25rem 1.4rem;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background: linear-gradient(135deg, rgba(23, 106, 87, 0.96), rgba(12, 62, 51, 0.94));
+      color: #f4fbf8;
+    }
+
+    .signal p,
+    .about p,
+    .project-card p {
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .section {
+      margin-top: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .about,
+    .projects {
+      padding: 2rem;
+      animation: rise 900ms ease both;
+    }
+
+    .about {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-head h2 {
+      font-size: 1.7rem;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .project-card {
+      display: grid;
+      gap: 0.8rem;
+      padding: 1.1rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(23, 32, 28, 0.08);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(23, 106, 87, 0.28);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .project-top strong {
+      font-size: 1.05rem;
+    }
+
+    .mini {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.4rem 0 0.4rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .about,
+      .projects {
+        padding: 1.55rem;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(calc(100% - 1rem), var(--max));
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links,
+      .footer,
+      .project-top,
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: clamp(2.45rem, 15vw, 4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="nav">
+      <a class="brand" href="#top">
+        <span class="brand-mark">S</span>
+        <span>Str1ckl4nd</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">Profile</a>
+        <a href="#projects">Research</a>
+        <a href="#education">Education</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <article class="panel hero-copy" id="top">
+          <span class="eyebrow">Student Security Portfolio</span>
+          <h1>Web Pentesting, Agent Security, and Vulnerability Research.</h1>
+          <p class="lead">
+            Cybersecurity student focused on web exploitation, access-control flaws,
+            agent offense and defense, and responsible disclosure. This preview
+            intentionally redacts target details, payloads, endpoints, and personal
+            identifiers.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">Research</a>
+            <a class="btn btn-ghost" href="https://github.com/Str1ckl4nd">GitHub</a>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Web AppSec</strong>
+            </div>
+            <div class="meta-card">
+              <span>Record</span>
+              <strong>9 campus reports</strong>
+            </div>
+            <div class="meta-card">
+              <span>Current</span>
+              <strong>USYD MCompSci</strong>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel hero-side">
+          <div class="stack-card">
+            <h2>Current Areas</h2>
+            <div class="stack-list">
+              <span class="tag">Web Pentest</span>
+              <span class="tag">Access Control</span>
+              <span class="tag">XSS</span>
+              <span class="tag">Info Exposure</span>
+              <span class="tag">Agent Offense/Defense</span>
+              <span class="tag">Writeups</span>
+              <span class="tag">Bug Bounty</span>
+            </div>
+          </div>
+          <div class="signal">
+            <h2>Recent Signal</h2>
+            <p>
+              The strongest public-facing narrative from your material is clear:
+              student researcher, multiple university-system disclosures,
+              remediation-first reporting, and ongoing graduate study in Sydney.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section">
+        <article class="panel about" id="about">
+          <div class="section-head">
+            <h2>Profile</h2>
+            <span>Short, technical, verifiable</span>
+          </div>
+          <p>
+            I am a security-focused computing student with hands-on work across
+            university systems, especially identity flows, student-service platforms,
+            and legacy web applications.
+          </p>
+          <p>
+            The public version should emphasize classes of findings and reporting
+            discipline rather than raw exploit detail. That makes the page stronger and
+            safer at the same time.
+          </p>
+          <p>
+            Current direction: web pentesting, agent offense and defense,
+            vulnerability research, and turning private reports into clean public case
+            studies.
+          </p>
+        </article>
+
+        <article class="panel projects" id="projects">
+          <div class="section-head">
+            <h2>Selected Research</h2>
+            <span>Sanitized highlights</span>
+          </div>
+          <div class="project-list">
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Identity and Verification Flows</strong>
+                <span class="mini">Auth logic</span>
+              </div>
+              <p>
+                Reported weaknesses in account and verification flows, including abusive
+                verification paths and exposure in account-related records.
+              </p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Student-Service Access Control</strong>
+                <span class="mini">IDOR / authz</span>
+              </div>
+              <p>
+                Reported access-control issues affecting leave-management and booking
+                systems, where personal or workflow data could be returned across users.
+              </p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Legacy Campus Web Apps</strong>
+                <span class="mini">XSS / exposure</span>
+              </div>
+              <p>
+                Documented XSS-class issues, guest-access mistakes, and file-exposure
+                problems in older campus platforms. Public copy stays intentionally high
+                level.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <article class="panel about" id="education">
+          <div class="section-head">
+            <h2>Education</h2>
+            <span>2020 to now</span>
+          </div>
+          <div class="project-list">
+            <div class="project-card">
+              <div class="project-top">
+                <strong>University of Sydney</strong>
+                <span class="mini">Current</span>
+              </div>
+              <p>Master of Computer Science.</p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Qihang Computer Society, Dalian Maritime University</strong>
+                <span class="mini">2020-2024</span>
+              </div>
+              <p>Head of the Network Security Department.</p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Graduate Disclosure Note</strong>
+                <span class="mini">Redacted</span>
+              </div>
+              <p>
+                During graduate study, reported a vulnerability affecting a university
+                service platform. Technical details remain private in this preview.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel projects">
+          <div class="section-head">
+            <h2>Recognition</h2>
+            <span>What to publish</span>
+          </div>
+          <div class="project-list">
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Responsible Disclosure Record</strong>
+                <span class="mini">2021-2024</span>
+              </div>
+              <p>
+                The material you provided supports a public claim of nine responsibly
+                reported findings across SSO, library, leave-management, OA, and campus
+                web systems.
+              </p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Institutional Recognition</strong>
+                <span class="mini">Verified</span>
+              </div>
+              <p>
+                One document is an institutional certificate recognizing vulnerability
+                reporting and remediation support.
+              </p>
+            </div>
+            <div class="project-card">
+              <div class="project-top">
+                <strong>Privacy-Safe Public Version</strong>
+                <span class="mini">Required</span>
+              </div>
+              <p>
+                Avoid real student IDs, target URLs, payloads, screenshots, report
+                contacts, and any direct reproduction steps.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <span>Local preview only. Private report details are intentionally omitted.</span>
+      <a href="https://github.com/Str1ckl4nd">github.com/Str1ckl4nd</a>
+    </footer>
+  </div>
+</body>
+</html>
