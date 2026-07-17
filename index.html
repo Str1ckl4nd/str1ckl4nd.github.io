@@ -61,6 +61,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      padding: 11px 0;
       border-bottom: 1px solid var(--line);
     }
 
@@ -96,6 +97,14 @@
 
     .nav-links a { border-bottom: 1px solid transparent; }
     .nav-links a:hover { border-color: currentColor; }
+    .nav-side { display: grid; justify-items: end; gap: 7px; }
+    .nav-update {
+      margin: 0;
+      color: var(--muted);
+      font: 10px/1.45 "IBM Plex Mono", monospace;
+      text-align: right;
+    }
+    .nav-update a { color: var(--ink); border-bottom: 1px solid var(--line); }
 
     .hero {
       display: grid;
@@ -304,12 +313,16 @@
     .publication-card p { margin: 0; color: #556059; line-height: 1.55; }
     .arrow { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; font-size: 20px; }
 
-    .private-report-grid, .education-grid {
+    .private-report-grid, .education-grid, .campus-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
-    .education-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .education-grid { grid-template-columns: 1fr; }
+    .education-group + .education-group { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .education-group-title { margin-bottom: 14px; }
+    .education-group-title .mini { color: var(--orange); }
+    .education-group-title strong { display: block; margin-top: 6px; font: 700 21px/1.2 "Manrope", sans-serif; }
     .project-card { min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: transparent; }
     .project-top { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
     .project-top strong { font: 700 17px/1.3 "Manrope", sans-serif; letter-spacing: -0.02em; }
@@ -352,6 +365,14 @@
     }
     .report-scope-note .mini { color: var(--muted); }
     .report-scope-note p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.5; }
+    .incoming-note {
+      margin-top: 16px;
+      padding: 15px 18px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
 
     .footer {
       display: flex;
@@ -369,14 +390,16 @@
       .hero { grid-template-columns: 1fr; }
       .hero-side { min-height: 360px; }
       .section { grid-template-columns: 1fr; }
-      .private-report-grid, .education-grid { grid-template-columns: 1fr; }
+      .private-report-grid, .education-grid, .campus-grid { grid-template-columns: 1fr; }
       .project-card { min-height: 0; }
     }
 
     @media (max-width: 680px) {
       .shell { width: min(calc(100% - 18px), var(--max)); }
       .nav { align-items: flex-start; flex-direction: column; padding: 18px 5px; }
+      .nav-side { justify-items: start; }
       .nav-links { justify-content: flex-start; gap: 8px 14px; }
+      .nav-update { max-width: 330px; text-align: left; }
       .hero { border-radius: 20px; }
       .hero-copy { padding: 32px 24px; }
       .meta-grid { grid-template-columns: 1fr; }
@@ -398,12 +421,15 @@
         <span class="brand-mark">S</span>
         <span>Str1ckl4nd / Strick Sheng</span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about">Profile</a>
-        <a href="#publications">Publications</a>
-        <a href="#reports">Reports</a>
-        <a href="#education">Education</a>
-      </nav>
+      <div class="nav-side">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#about">Profile</a>
+          <a href="#publications">Publications</a>
+          <a href="#reports">Reports</a>
+          <a href="#education">Education</a>
+        </nav>
+        <p class="nav-update">Last updated: 17 July 2026 · For the latest research progress and interests, <a href="mailto:cshe0476@uni.sydney.edu.au">contact me by email</a>.</p>
+      </div>
     </header>
 
     <main>
@@ -475,7 +501,7 @@
       <section class="section" id="publications">
         <div class="section-rail"><span class="section-index">02</span><h2>Publications</h2></div>
         <div class="section-body">
-          <p class="section-intro">Selected work on agentic security auditing and evidence-grounding defects in LLM agents.</p>
+          <p class="section-intro">Agentic AI Security.</p>
           <div class="publication-list">
             <a class="publication-card" href="https://arxiv.org/abs/2606.16420">
               <span class="publication-year">2026</span>
@@ -504,7 +530,7 @@
       <section class="section" id="reports">
         <div class="section-rail"><span class="section-index">03</span><h2>Vulnerability Reports</h2></div>
         <div class="section-body">
-          <p class="section-intro">Public and private vulnerability reporting, grouped by disclosure status and attribution.</p>
+          <p class="section-intro">Public and private vulnerability reporting.</p>
 
           <div class="report-group">
             <div class="report-group-head">
@@ -529,10 +555,7 @@
                 <h3>CVE-2026-55602</h3><p>Host-header-driven backend routing bypass.</p>
               </a>
             </div>
-            <div class="report-scope-note">
-              <span class="mini">Scope</span>
-              <p>Future public vulnerability records, with or without CVE IDs, can be listed here under their corresponding projects.</p>
-            </div>
+            <div class="incoming-note">More CVE vulnerability reports incoming.</div>
           </div>
 
           <div class="report-group">
@@ -565,15 +588,30 @@
       <section class="section" id="education">
         <div class="section-rail"><span class="section-index">04</span><h2>Education</h2></div>
         <div class="section-body">
-          <p class="section-intro">Education and community leadership, 2020 to now.</p>
-          <div class="education-grid">
-            <div class="project-card">
-              <div class="project-top"><strong>University of Sydney</strong><span class="mini">Current</span></div>
-              <p>Master of Computer Science.</p>
+          <div class="education-group">
+            <div class="education-group-title"><span class="mini">Education</span><strong>Academic Study</strong></div>
+            <div class="education-grid">
+              <div class="project-card">
+                <div class="project-top"><strong>University of Sydney</strong><span class="mini">Current</span></div>
+                <p>Master of Computer Science.</p>
+              </div>
             </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Qihang Computer Society, Dalian Maritime University</strong><span class="mini">2020-2024</span></div>
-              <p>Head of the Network Security Department.</p>
+          </div>
+          <div class="education-group">
+            <div class="education-group-title"><span class="mini">Campus Experience</span><strong>Competitions &amp; Leadership</strong></div>
+            <div class="campus-grid">
+              <div class="project-card">
+                <div class="project-top"><strong>Nexus CTF</strong><span class="mini">2026</span></div>
+                <p>7th place at the University of Sydney.</p>
+              </div>
+              <div class="project-card">
+                <div class="project-top"><strong>HackMac</strong><span class="mini">2026</span></div>
+                <p>4th place at Macquarie University.</p>
+              </div>
+              <div class="project-card">
+                <div class="project-top"><strong>Qihang Computer Society</strong><span class="mini">2020-2024</span></div>
+                <p>Head of the Network Security Department at Dalian Maritime University.</p>
+              </div>
             </div>
           </div>
         </div>
