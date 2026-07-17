@@ -315,6 +315,18 @@
     .mini { color: var(--muted); font-size: 10px; white-space: nowrap; }
     .project-card p { margin: 20px 0 0; color: #566059; line-height: 1.55; }
 
+    .cve-project-head {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 18px;
+      padding: 0 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cve-project-head .mini { color: var(--orange); }
+    .cve-project-head strong { display: block; margin-top: 6px; font: 700 21px/1.2 "Manrope", sans-serif; }
+    .cve-project-head p { margin: 0; color: var(--muted); line-height: 1.55; }
     .cve-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .cve-card { display: block; padding: 20px; border-radius: var(--radius); color: var(--white); background: var(--night); transition: transform 180ms ease, background 180ms ease; }
     .cve-card:hover { transform: translateY(-3px); background: #18231e; }
@@ -323,8 +335,20 @@
     .severity { color: #9eaaa2; font: 10px/1.4 "IBM Plex Mono", monospace; text-transform: uppercase; }
     .cve-card h3 { margin: 16px 0 8px; font: 700 clamp(20px, 2.4vw, 26px)/1.15 "Manrope", sans-serif; letter-spacing: -0.04em; }
     .cve-card p { margin: 0; color: #aeb9b2; line-height: 1.45; }
-    .cve-card:last-child { grid-column: 1 / -1; background: var(--orange); color: var(--night); }
-    .cve-card:last-child .cve-role, .cve-card:last-child .severity, .cve-card:last-child p { color: var(--night); }
+    .cve-card.team-result { grid-column: 1 / -1; color: var(--ink); background: var(--paper-deep); }
+    .cve-card.team-result .cve-role { color: #8a4b2a; }
+    .cve-card.team-result .severity, .cve-card.team-result p { color: #5f665f; }
+    .cve-scope-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 16px;
+      padding: 15px 18px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+    }
+    .cve-scope-note .mini { color: var(--muted); }
+    .cve-scope-note p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.5; }
 
     .footer {
       display: flex;
@@ -355,10 +379,12 @@
       .meta-grid { grid-template-columns: 1fr; }
       .hero-side { padding: 16px; }
       .about-grid, .cve-grid { grid-template-columns: 1fr; }
+      .cve-project-head { grid-template-columns: 1fr; gap: 10px; }
+      .cve-card.team-result { grid-column: auto; }
+      .cve-scope-note { flex-direction: column; gap: 8px; }
       .collaboration-note { grid-template-columns: 1fr; }
       .publication-card { grid-template-columns: 1fr; padding: 24px; }
       .publication-card .arrow { position: absolute; right: 18px; top: 18px; }
-      .cve-card:last-child { grid-column: auto; }
       .footer { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -399,7 +425,7 @@
           <div class="meta-grid">
             <div class="meta-card"><span>Focus</span><strong>Agent Security</strong></div>
             <div class="meta-card"><span>Publications</span><strong>2 arXiv Preprints</strong></div>
-            <div class="meta-card"><span>CVE Credits</span><strong>5 Public CVEs</strong></div>
+            <div class="meta-card"><span>CVE Reports</span><strong>4 via EvoHunt</strong></div>
           </div>
         </article>
 
@@ -498,28 +524,36 @@
       <section class="section" id="cves">
         <div class="section-rail"><span class="section-index">04</span><h2>CVE Credits</h2></div>
         <div class="section-body">
-          <p class="section-intro">Publicly confirmed credits in the GitHub Advisory Database.</p>
+          <p class="section-intro">Project-attributed CVE work, with individual reporting and team credit kept separate.</p>
+          <div class="cve-project-head">
+            <div><span class="mini">Project</span><strong>EvoHunt</strong></div>
+            <p>The first four CVEs were reported by me as part of EvoHunt. CVE-2026-9675 is an EvoHunt team result and is not included in my individual report count.</p>
+          </div>
           <div class="cve-grid">
             <a class="cve-card" href="https://github.com/advisories/GHSA-52v5-jr5w-gjxr">
-              <div class="cve-top"><span class="cve-role">Reporter</span><span class="severity">High · sigstore</span></div>
+              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">High · sigstore</span></div>
               <h3>CVE-2026-48815</h3><p>Certificate OID verification constraints silently dropped.</p>
             </a>
             <a class="cve-card" href="https://github.com/advisories/GHSA-xgjw-pm74-86q4">
-              <div class="cve-top"><span class="cve-role">Reporter</span><span class="severity">Moderate · sigstore-js</span></div>
+              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · sigstore-js</span></div>
               <h3>CVE-2026-48816</h3><p>Insufficient verification of transparency-log timestamp authenticity.</p>
             </a>
             <a class="cve-card" href="https://github.com/advisories/GHSA-jfc7-64v2-mr8c">
-              <div class="cve-top"><span class="cve-role">Reporter</span><span class="severity">Moderate · @sigstore/core</span></div>
+              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · @sigstore/core</span></div>
               <h3>CVE-2026-48758</h3><p>DSSE payloadType type-binding failure.</p>
             </a>
-            <a class="cve-card" href="https://github.com/advisories/GHSA-38rv-x7px-6hhq">
-              <div class="cve-top"><span class="cve-role">Finder</span><span class="severity">High · undici</span></div>
-              <h3>CVE-2026-9675</h3><p>WebSocket denial of service via cumulative fragment bypass.</p>
-            </a>
             <a class="cve-card" href="https://github.com/advisories/GHSA-64mm-vxmg-q3vj">
-              <div class="cve-top"><span class="cve-role">Reporter</span><span class="severity">Moderate · http-proxy-middleware</span></div>
+              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · http-proxy-middleware</span></div>
               <h3>CVE-2026-55602</h3><p>Host-header-driven backend routing bypass.</p>
             </a>
+            <a class="cve-card team-result" href="https://github.com/advisories/GHSA-38rv-x7px-6hhq">
+              <div class="cve-top"><span class="cve-role">EvoHunt team result · not individually counted</span><span class="severity">High · undici</span></div>
+              <h3>CVE-2026-9675</h3><p>WebSocket denial of service via cumulative fragment bypass.</p>
+            </a>
+          </div>
+          <div class="cve-scope-note">
+            <span class="mini">Attribution scope</span>
+            <p>Future CVEs from other projects or independent reports will be listed as separate groups rather than folded into EvoHunt.</p>
           </div>
         </div>
       </section>
