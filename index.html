@@ -304,18 +304,24 @@
     .publication-card p { margin: 0; color: #556059; line-height: 1.55; }
     .arrow { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; font-size: 20px; }
 
-    .research-grid, .education-grid, .recognition-grid {
+    .private-report-grid, .education-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
+    .education-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .project-card { min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-radius: var(--radius); border: 1px solid var(--line); background: transparent; }
     .project-top { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
     .project-top strong { font: 700 17px/1.3 "Manrope", sans-serif; letter-spacing: -0.02em; }
     .mini { color: var(--muted); font-size: 10px; white-space: nowrap; }
     .project-card p { margin: 20px 0 0; color: #566059; line-height: 1.55; }
 
-    .cve-project-head {
+    .report-group + .report-group {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    .report-group-head {
       display: grid;
       grid-template-columns: 120px minmax(0, 1fr);
       gap: 28px;
@@ -324,9 +330,9 @@
       padding: 0 0 18px;
       border-bottom: 1px solid var(--line);
     }
-    .cve-project-head .mini { color: var(--orange); }
-    .cve-project-head strong { display: block; margin-top: 6px; font: 700 21px/1.2 "Manrope", sans-serif; }
-    .cve-project-head p { margin: 0; color: var(--muted); line-height: 1.55; }
+    .report-group-head .mini { color: var(--orange); }
+    .report-group-head strong { display: block; margin-top: 6px; font: 700 21px/1.2 "Manrope", sans-serif; }
+    .report-group-head p { margin: 0; color: var(--muted); line-height: 1.55; }
     .cve-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .cve-card { display: block; padding: 20px; border-radius: var(--radius); color: var(--white); background: var(--night); transition: transform 180ms ease, background 180ms ease; }
     .cve-card:hover { transform: translateY(-3px); background: #18231e; }
@@ -335,10 +341,7 @@
     .severity { color: #9eaaa2; font: 10px/1.4 "IBM Plex Mono", monospace; text-transform: uppercase; }
     .cve-card h3 { margin: 16px 0 8px; font: 700 clamp(20px, 2.4vw, 26px)/1.15 "Manrope", sans-serif; letter-spacing: -0.04em; }
     .cve-card p { margin: 0; color: #aeb9b2; line-height: 1.45; }
-    .cve-card.team-result { grid-column: 1 / -1; color: var(--ink); background: var(--paper-deep); }
-    .cve-card.team-result .cve-role { color: #8a4b2a; }
-    .cve-card.team-result .severity, .cve-card.team-result p { color: #5f665f; }
-    .cve-scope-note {
+    .report-scope-note {
       display: flex;
       justify-content: space-between;
       gap: 24px;
@@ -347,8 +350,8 @@
       border: 1px dashed var(--line);
       border-radius: 14px;
     }
-    .cve-scope-note .mini { color: var(--muted); }
-    .cve-scope-note p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.5; }
+    .report-scope-note .mini { color: var(--muted); }
+    .report-scope-note p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.5; }
 
     .footer {
       display: flex;
@@ -366,7 +369,7 @@
       .hero { grid-template-columns: 1fr; }
       .hero-side { min-height: 360px; }
       .section { grid-template-columns: 1fr; }
-      .research-grid, .education-grid, .recognition-grid { grid-template-columns: 1fr; }
+      .private-report-grid, .education-grid { grid-template-columns: 1fr; }
       .project-card { min-height: 0; }
     }
 
@@ -379,9 +382,8 @@
       .meta-grid { grid-template-columns: 1fr; }
       .hero-side { padding: 16px; }
       .about-grid, .cve-grid { grid-template-columns: 1fr; }
-      .cve-project-head { grid-template-columns: 1fr; gap: 10px; }
-      .cve-card.team-result { grid-column: auto; }
-      .cve-scope-note { flex-direction: column; gap: 8px; }
+      .report-group-head { grid-template-columns: 1fr; gap: 10px; }
+      .report-scope-note { flex-direction: column; gap: 8px; }
       .collaboration-note { grid-template-columns: 1fr; }
       .publication-card { grid-template-columns: 1fr; padding: 24px; }
       .publication-card .arrow { position: absolute; right: 18px; top: 18px; }
@@ -399,8 +401,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">Profile</a>
         <a href="#publications">Publications</a>
-        <a href="#projects">Research</a>
-        <a href="#cves">CVE Credits</a>
+        <a href="#reports">Reports</a>
         <a href="#education">Education</a>
       </nav>
     </header>
@@ -425,7 +426,7 @@
           <div class="meta-grid">
             <div class="meta-card"><span>Focus</span><strong>Agent Security</strong></div>
             <div class="meta-card"><span>Publications</span><strong>2 arXiv Preprints</strong></div>
-            <div class="meta-card"><span>CVE Reports</span><strong>4 via EvoHunt</strong></div>
+            <div class="meta-card"><span>Public Records</span><strong>4 EvoHunt Reports</strong></div>
           </div>
         </article>
 
@@ -500,66 +501,69 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <div class="section-rail"><span class="section-index">03</span><h2>Selected Research</h2></div>
+      <section class="section" id="reports">
+        <div class="section-rail"><span class="section-index">03</span><h2>Vulnerability Reports</h2></div>
         <div class="section-body">
-          <p class="section-intro">Sanitized highlights from application-security work.</p>
-          <div class="research-grid">
-            <div class="project-card">
-              <div class="project-top"><strong>Identity and Verification Flows</strong><span class="mini">Auth logic</span></div>
-              <p>Reported weaknesses in account and verification flows, including abusive verification paths and exposure in account-related records.</p>
-            </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Student-Service Access Control</strong><span class="mini">IDOR / authz</span></div>
-              <p>Reported access-control issues affecting leave-management and booking systems, where personal or workflow data could be returned across users.</p>
-            </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Legacy Campus Web Apps</strong><span class="mini">XSS / exposure</span></div>
-              <p>Documented XSS-class issues, guest-access mistakes, and file-exposure problems in older campus platforms. Public copy stays intentionally high level.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <p class="section-intro">Public and private vulnerability reporting, grouped by disclosure status and attribution.</p>
 
-      <section class="section" id="cves">
-        <div class="section-rail"><span class="section-index">04</span><h2>CVE Credits</h2></div>
-        <div class="section-body">
-          <p class="section-intro">Project-attributed CVE work, with individual reporting and team credit kept separate.</p>
-          <div class="cve-project-head">
-            <div><span class="mini">Project</span><strong>EvoHunt</strong></div>
-            <p>The first four CVEs were reported by me as part of EvoHunt. CVE-2026-9675 is an EvoHunt team result and is not included in my individual report count.</p>
+          <div class="report-group">
+            <div class="report-group-head">
+              <div><span class="mini">Publicly Recorded Reports</span><strong>EvoHunt</strong></div>
+              <p>Four publicly recorded EvoHunt team findings, with reports submitted by me. These are team outcomes rather than independent discoveries.</p>
+            </div>
+            <div class="cve-grid">
+              <a class="cve-card" href="https://github.com/advisories/GHSA-52v5-jr5w-gjxr">
+                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">High · sigstore</span></div>
+                <h3>CVE-2026-48815</h3><p>Certificate OID verification constraints silently dropped.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-xgjw-pm74-86q4">
+                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · sigstore-js</span></div>
+                <h3>CVE-2026-48816</h3><p>Insufficient verification of transparency-log timestamp authenticity.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-jfc7-64v2-mr8c">
+                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · @sigstore/core</span></div>
+                <h3>CVE-2026-48758</h3><p>DSSE payloadType type-binding failure.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-64mm-vxmg-q3vj">
+                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · http-proxy-middleware</span></div>
+                <h3>CVE-2026-55602</h3><p>Host-header-driven backend routing bypass.</p>
+              </a>
+            </div>
+            <div class="report-scope-note">
+              <span class="mini">Scope</span>
+              <p>Future public vulnerability records, with or without CVE IDs, can be listed here under their corresponding projects.</p>
+            </div>
           </div>
-          <div class="cve-grid">
-            <a class="cve-card" href="https://github.com/advisories/GHSA-52v5-jr5w-gjxr">
-              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">High · sigstore</span></div>
-              <h3>CVE-2026-48815</h3><p>Certificate OID verification constraints silently dropped.</p>
-            </a>
-            <a class="cve-card" href="https://github.com/advisories/GHSA-xgjw-pm74-86q4">
-              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · sigstore-js</span></div>
-              <h3>CVE-2026-48816</h3><p>Insufficient verification of transparency-log timestamp authenticity.</p>
-            </a>
-            <a class="cve-card" href="https://github.com/advisories/GHSA-jfc7-64v2-mr8c">
-              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · @sigstore/core</span></div>
-              <h3>CVE-2026-48758</h3><p>DSSE payloadType type-binding failure.</p>
-            </a>
-            <a class="cve-card" href="https://github.com/advisories/GHSA-64mm-vxmg-q3vj">
-              <div class="cve-top"><span class="cve-role">Reported by me · EvoHunt</span><span class="severity">Moderate · http-proxy-middleware</span></div>
-              <h3>CVE-2026-55602</h3><p>Host-header-driven backend routing bypass.</p>
-            </a>
-            <a class="cve-card team-result" href="https://github.com/advisories/GHSA-38rv-x7px-6hhq">
-              <div class="cve-top"><span class="cve-role">EvoHunt team result · not individually counted</span><span class="severity">High · undici</span></div>
-              <h3>CVE-2026-9675</h3><p>WebSocket denial of service via cumulative fragment bypass.</p>
-            </a>
-          </div>
-          <div class="cve-scope-note">
-            <span class="mini">Attribution scope</span>
-            <p>Future CVEs from other projects or independent reports will be listed as separate groups rather than folded into EvoHunt.</p>
+
+          <div class="report-group">
+            <div class="report-group-head">
+              <div><span class="mini">Private Reports</span><strong>Campus Systems</strong></div>
+              <p>Nine responsibly reported findings across SSO, library, leave-management, OA, and other campus web systems.</p>
+            </div>
+            <div class="private-report-grid">
+              <div class="project-card">
+                <div class="project-top"><strong>Identity and Verification Flows</strong><span class="mini">Auth logic</span></div>
+                <p>Reported weaknesses in account and verification flows, including abusive verification paths and exposure in account-related records.</p>
+              </div>
+              <div class="project-card">
+                <div class="project-top"><strong>Student-Service Access Control</strong><span class="mini">IDOR / authz</span></div>
+                <p>Reported access-control issues affecting leave-management and booking systems, where personal or workflow data could be returned across users.</p>
+              </div>
+              <div class="project-card">
+                <div class="project-top"><strong>Legacy Campus Web Apps</strong><span class="mini">XSS / exposure</span></div>
+                <p>Documented XSS-class issues, guest-access mistakes, and file-exposure problems in older campus platforms.</p>
+              </div>
+            </div>
+            <div class="report-scope-note">
+              <span class="mini">Recognition</span>
+              <p>An institutional certificate recognizes vulnerability reporting and remediation support. Technical details, identifiers, and reproduction steps remain private.</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="education">
-        <div class="section-rail"><span class="section-index">05</span><h2>Education</h2></div>
+        <div class="section-rail"><span class="section-index">04</span><h2>Education</h2></div>
         <div class="section-body">
           <p class="section-intro">Education and community leadership, 2020 to now.</p>
           <div class="education-grid">
@@ -570,31 +574,6 @@
             <div class="project-card">
               <div class="project-top"><strong>Qihang Computer Society, Dalian Maritime University</strong><span class="mini">2020-2024</span></div>
               <p>Head of the Network Security Department.</p>
-            </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Graduate Disclosure Note</strong><span class="mini">Redacted</span></div>
-              <p>During graduate study, reported a vulnerability affecting a university service platform. Technical details remain private in this preview.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="recognition">
-        <div class="section-rail"><span class="section-index">06</span><h2>Recognition</h2></div>
-        <div class="section-body">
-          <p class="section-intro">A public record with evidence boundaries kept explicit.</p>
-          <div class="recognition-grid">
-            <div class="project-card">
-              <div class="project-top"><strong>Responsible Disclosure Record</strong><span class="mini">2021-2024</span></div>
-              <p>The material you provided supports a public claim of nine responsibly reported findings across SSO, library, leave-management, OA, and campus web systems.</p>
-            </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Institutional Recognition</strong><span class="mini">Verified</span></div>
-              <p>One document is an institutional certificate recognizing vulnerability reporting and remediation support.</p>
-            </div>
-            <div class="project-card">
-              <div class="project-top"><strong>Privacy-Safe Public Version</strong><span class="mini">Required</span></div>
-              <p>Avoid real student IDs, target URLs, payloads, screenshots, report contacts, and any direct reproduction steps.</p>
             </div>
           </div>
         </div>
