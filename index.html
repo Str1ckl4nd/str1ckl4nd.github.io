@@ -425,10 +425,11 @@
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#about">Profile</a>
           <a href="#publications">Publications</a>
+          <a href="#projects">Projects</a>
           <a href="#reports">Reports</a>
           <a href="#education">Education</a>
         </nav>
-        <p class="nav-update">Last updated: 22 July 2026 · For the latest research progress and interests, <a href="mailto:cshe0476@uni.sydney.edu.au">contact me by email</a>.</p>
+        <p class="nav-update">Last updated: 30 September 2026 · For the latest research progress and interests, <a href="mailto:cshe0476@uni.sydney.edu.au">contact me by email</a>.</p>
       </div>
     </header>
 
@@ -452,7 +453,7 @@
           <div class="meta-grid">
             <div class="meta-card"><span>Focus</span><strong>Agent Security</strong></div>
             <div class="meta-card"><span>Publications</span><strong>2 arXiv Preprints</strong></div>
-            <div class="meta-card"><span>Public Records</span><strong>6 EvoHunt CVEs</strong></div>
+            <div class="meta-card"><span>Public Records</span><strong>15 Advisory Credits</strong></div>
           </div>
         </article>
 
@@ -527,40 +528,86 @@
         </div>
       </section>
 
+      <section class="section" id="projects">
+        <div class="section-rail"><span class="section-index">03</span><h2>Projects</h2></div>
+        <div class="section-body">
+          <div class="project-card">
+            <div class="project-top"><strong>Hash Scan</strong><span class="mini">Team project · September 2026</span></div>
+            <p>Co-developed with teammates, Hash Scan is a HashKey Chain transaction explorer built around historical transaction data, with Etherscan-inspired action labeling and transaction analysis. <a class="text-link" href="https://github.com/yongyaoduan/ethereum_hackathon_007">Public code repository ↗</a></p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="reports">
-        <div class="section-rail"><span class="section-index">03</span><h2>Vulnerability Reports</h2></div>
+        <div class="section-rail"><span class="section-index">04</span><h2>Vulnerability Reports</h2></div>
         <div class="section-body">
           <p class="section-intro">Public and private vulnerability reporting.</p>
 
           <div class="report-group">
             <div class="report-group-head">
               <div><span class="mini">CVE Records</span><strong>EvoHunt</strong></div>
-              <p>Six public EvoHunt team outcomes and three masked placeholders for assigned records awaiting publication. Public reports shown here were submitted by me; these are team outcomes rather than independent discoveries.</p>
+              <p>Contributed to a team research effort resulting in 40 CVEs, with individual credits in 15 public advisories. My contributions span research, validation, and responsible disclosure, with Finder and Reporter roles recorded by GitHub. Assigned records awaiting publication remain masked below. <a class="text-link" href="https://github.com/advisories?query=credit%3AStr1ckl4nd">View all public advisory credits ↗</a></p>
             </div>
             <div class="cve-grid">
-              <a class="cve-card" href="https://github.com/advisories/GHSA-52v5-jr5w-gjxr">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">High · sigstore</span></div>
+              <a class="cve-card" href="https://github.com/sigstore/sigstore-js/security/advisories/GHSA-52v5-jr5w-gjxr">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">High · sigstore</span></div>
                 <h3>CVE-2026-48815</h3><p>Certificate OID verification constraints silently dropped.</p>
               </a>
               <a class="cve-card" href="https://github.com/advisories/GHSA-xgjw-pm74-86q4">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · sigstore-js</span></div>
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Moderate · @sigstore/verify</span></div>
                 <h3>CVE-2026-48816</h3><p>Insufficient verification of transparency-log timestamp authenticity.</p>
               </a>
               <a class="cve-card" href="https://github.com/advisories/GHSA-jfc7-64v2-mr8c">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · @sigstore/core</span></div>
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Moderate · @sigstore/core</span></div>
                 <h3>CVE-2026-48758</h3><p>DSSE payloadType type-binding failure.</p>
               </a>
               <a class="cve-card" href="https://github.com/advisories/GHSA-64mm-vxmg-q3vj">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · http-proxy-middleware</span></div>
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Moderate · http-proxy-middleware</span></div>
                 <h3>CVE-2026-55602</h3><p>Host-header-driven backend routing bypass.</p>
               </a>
               <a class="cve-card" href="https://github.com/electron-userland/electron-builder/security/advisories/GHSA-p2f4-r6v6-j797">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">High · electron-builder</span></div>
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">High · electron-builder</span></div>
                 <h3>CVE-2026-54673</h3><p>Cross-origin updater redirects can expose credential-bearing headers.</p>
               </a>
               <a class="cve-card" href="https://github.com/advisories/GHSA-m28w-2pqf-7qgj">
-                <div class="cve-top"><span class="cve-role">EvoHunt team · report submitted by me</span><span class="severity">Moderate · webpack-dev-server</span></div>
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Moderate · webpack-dev-server</span></div>
                 <h3>CVE-2026-14631</h3><p>Malformed Host or Origin headers can terminate the development server.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-gg4h-3hg2-grpc">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">Low · joi</span></div>
+                <h3>CVE-2026-84367</h3><p>Template-based key renaming can alter the validated object's prototype.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-p43p-whwx-q52h">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Moderate · JupyterHub</span></div>
+                <h3>CVE-2026-54338</h3><p>Unbounded username logging can exhaust resources during failed logins.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-fwjf-m4qw-9f2x">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">Moderate · djangoCMS</span></div>
+                <h3>CVE-2026-54625</h3><p>Page caching ignores plugin-declared Vary headers, risking disclosure and cache poisoning.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-8jj7-4v57-frf5">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">High · djangoCMS</span></div>
+                <h3>CVE-2026-54623</h3><p>Cyclic plugin reparenting can cause denial of service.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-vgxm-h9gx-h9w7">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">Moderate · djangoCMS</span></div>
+                <h3>CVE-2026-54624</h3><p>Structure access bypasses page-view permissions.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-4xfr-4p46-gc6p">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">Moderate · djangoCMS</span></div>
+                <h3>CVE-2026-54622</h3><p>Clipboard copying can disclose unauthorized plugin content.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-c4c3-pg64-4m4v">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">Low · Mermaid</span></div>
+                <h3>CVE-2026-71438</h3><p>Configuration APIs can allow prototype pollution.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-2m8v-j782-fhvr">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Reporter</span><span class="severity">High · Socket.IO/socket.io-parser</span></div>
+                <h3>CVE-2026-69185</h3><p>Zero-attachment packets can trigger memory exhaustion.</p>
+              </a>
+              <a class="cve-card" href="https://github.com/advisories/GHSA-38rv-x7px-6hhq">
+                <div class="cve-top"><span class="cve-role">Public advisory credit · Finder</span><span class="severity">High · undici</span></div>
+                <h3>CVE-2026-9675</h3><p>WebSocket fragment-limit bypass can exhaust memory.</p>
               </a>
               <div class="cve-card" aria-label="Assigned CVE awaiting publication">
                 <div class="cve-top" aria-hidden="true"><span class="cve-role">&nbsp;</span><span class="severity">&nbsp;</span></div>
@@ -606,7 +653,7 @@
       </section>
 
       <section class="section" id="education">
-        <div class="section-rail"><span class="section-index">04</span><h2>Education</h2></div>
+        <div class="section-rail"><span class="section-index">05</span><h2>Education</h2></div>
         <div class="section-body">
           <div class="education-group">
             <div class="education-group-title"><span class="mini">Education</span><strong>Academic Study</strong></div>
@@ -624,6 +671,10 @@
           <div class="education-group">
             <div class="education-group-title"><span class="mini">Campus Experience</span><strong>Competitions &amp; Leadership</strong></div>
             <div class="campus-grid">
+              <div class="project-card">
+                <div class="project-top"><strong>Ethereum Hackathon @ Sydney</strong><span class="mini">September 2026</span></div>
+                <p>3rd Place, EAG Track — team award for Hash Scan.</p>
+              </div>
               <div class="project-card">
                 <div class="project-top"><strong>Nexus CTF</strong><span class="mini">2026</span></div>
                 <p>7th place at the University of Sydney.</p>
